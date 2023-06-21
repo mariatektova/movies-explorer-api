@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
         next(new NotFound('Фильма с указанным id не существует'));
       } else if (movie.owner.toHexString() !== req.user._id) {
         next(
-          new Forbidden('У вас нет прав на удаление чужого фильма'),
+          new Forbidden('Вы не можете удалить чужой фильм'),
         );
       }
       return next();
