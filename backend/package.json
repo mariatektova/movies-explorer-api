@@ -1,7 +1,7 @@
 {
   "name": "movie-explorer",
   "version": "1.0.0",
-  "description": "API для аутентификации пользователей и сохранения фильмов",
+  "description": "API",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

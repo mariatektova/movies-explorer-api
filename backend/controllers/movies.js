@@ -2,7 +2,7 @@ const Movie = require('../models/movie');
 const BadRequest = require('../errors/badRequest');
 const NotFound = require('../errors/notFound');
 
-const getMovies = (req, res, next) => {
+const getMovie = (req, res, next) => {
   Movie.find({ owner: req.user._id })
     .then((movies) => {
       res.send(movies);
@@ -38,7 +38,7 @@ const deleteMovie = (req, res, next) => {
 };
 
 module.exports = {
-  getMovies,
+  getMovie,
   createMovie,
   deleteMovie,
 };
