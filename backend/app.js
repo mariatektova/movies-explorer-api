@@ -3,7 +3,7 @@ const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const limiter = require('./utils/limiter');
-const centralizedErrorController = require('./middlewares/centralizedErrorController');
+const errorController = require('./middlewares/errorController');
 
 const router = require('./routes');
 const connectDB = require('./db');
@@ -32,7 +32,7 @@ app.use((req, res, next) => {
 app.use(errorLogger);
 app.use(errors());
 
-app.use(centralizedErrorController);
+app.use(errorController);
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);

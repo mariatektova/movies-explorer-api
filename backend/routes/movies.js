@@ -1,6 +1,6 @@
 const moviesRouter = require('express').Router();
 const { celebrate } = require('celebrate');
-const authDeleteMovie = require('../middlewares/centralizedErrorController');
+const authDeleteMovie = require('../middlewares/errorController');
 
 const {
   createMovieValidation,
