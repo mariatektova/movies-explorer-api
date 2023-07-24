@@ -12,7 +12,7 @@ const NotFound = require('./errors/notFound');
 
 const { PORT = 3000 } = process.env;
 const app = express();
-const cors = require('cors');
+const cors = require('./middlewares/cors');
 connectDB();
 
 app.use(express.json());
