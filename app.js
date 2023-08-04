@@ -10,7 +10,7 @@ const connectDB = require('./db');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFound = require('./errors/notFound');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3003 } = process.env;
 const app = express();
 const cors = require('./middlewares/cors');
 connectDB();
@@ -19,7 +19,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 app.use(cookieParser());
-app.use(cors);
+app.use(cors({
+  origin: "*",
+}));
 
 app.use(requestLogger);
 
