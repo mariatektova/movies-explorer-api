@@ -12,16 +12,14 @@ const NotFound = require('./errors/notFound');
 
 const { PORT = 3000 } = process.env;
 const app = express();
-const cors = require('cors');
+const cors = require('./middlewares/cors');
 connectDB();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 app.use(cookieParser());
-app.use(cors({
-  origin: "https//api.mariatektova.diploma.nomoredomains.rocks",
-}));
+app.use(cors);
 
 app.use(requestLogger);
 
