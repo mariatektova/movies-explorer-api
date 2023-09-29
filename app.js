@@ -10,7 +10,7 @@ const connectDB = require('./db');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFound = require('./errors/notFound');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 const app = express();
 const cors = require('./middlewares/cors');
 connectDB();

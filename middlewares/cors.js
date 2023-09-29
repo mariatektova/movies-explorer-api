@@ -1,19 +1,23 @@
-module.exports = (req, res, next) => {
+const allowedCors = [
+  'https://mariatektova.diploma.nomoredomains.rocks',
+  'http://mariatektova.diploma.nomoredomains.rocks',
+  'http://localhost:3000',
+];
+
+function cors(req, res, next) {
+  const { origin } = req.headers;
   const { method } = req;
-  const requestHeaders = req.headers['access-control-request-headers'];
   const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
-
-  // Set the Access-Control-Allow-Origin header to allow all origins
-  res.header('Access-Control-Allow-Origin', '*');
-
+  const requestHeaders = req.headers['access-control-request-headers'];
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
   if (method === 'OPTIONS') {
-    // Allow all types of cross-origin requests (by default)
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
-    // Allow cross-origin requests with these headers
     res.header('Access-Control-Allow-Headers', requestHeaders);
-    // End the request processing and return the result to the client
     return res.end();
   }
-
   return next();
-};
+}
+
+module.exports = cors;
